@@ -1,0 +1,40 @@
+.Main {
+  text-align: center;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: "Header" "Content" "Footer";
+}
+
+.Care-logo {
+  height: 20vmin;
+}
+
+.Header {
+  grid-area: Header;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.Content {
+  grid-area: Content;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.Footer {
+  grid-area: Footer;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
