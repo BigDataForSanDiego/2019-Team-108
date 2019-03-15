@@ -55,12 +55,12 @@ export default class Home extends Component {
 
     return (
       <div>
-        <h1>{this.state.city}</h1>
-        <h1>{this.state.country}</h1>
-        <h1>{this.state.description}</h1>
-        <h1>{this.state.humidity}</h1>
-        <h1>{this.state.temperature}</h1>
-        <h1>{this.state.wind}</h1>
+        <h1>
+          Weather for {this.state.city}, {this.state.country}!
+        </h1>
+        <h1>Expect {this.state.description}!</h1>
+        <h1>Temperature: {(this.state.temperature * 1.8 + 32).toFixed(2)}°F</h1>
+        <h1>Wind speed: {this.state.wind} miles per hour</h1>
         <h1>Have you taken your medication?</h1>
         <form onSubmit={this.handleSubmit}>
           <Button type="submit" variant="contained" color="primary">
