@@ -9,27 +9,37 @@ export default class Home extends Component {
   state = {
     city: "San Diego",
     country: "USA",
-    temperature: undefined,
-    city: undefined,
-    country: undefined,
-    humidity: undefined,
     description: undefined,
+    humidity: undefined,
+    temperature: undefined,
     wind: undefined,
-    latitude: undefined,
-    longitude: undefined,
     error: undefined,
     toSignUp: false,
   };
 
-  getWeather = async e => {
-    const API_CALL = await fetch(
+  componentDidMount() {
+    fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${
         this.state.country
       }&appid=${OPEN_WEATHER_ID}&units=metric`,
-    );
-    const data = await API_CALL.json();
-    console.log(data);
-  };
+    )
+      .then(results => {
+        return results.json();
+      })
+      .then(data => {
+        this.setState({
+          city: data.name,
+          country: data.sys.country,
+          description: data.weather[0].description,
+          humidity: data.main.humidity,
+          temperature: data.main.temp,
+          wind: data.wind.speed,
+          error: "",
+        });
+      });
+    // const data = await API_CALL.json();
+    // console.log(data);
+  }
 
   handleSubmit = e => {
     e.preventDefault();
@@ -45,7 +55,12 @@ export default class Home extends Component {
 
     return (
       <div>
-        <h1>Weather</h1>
+        <h1>{this.state.city}</h1>
+        <h1>{this.state.country}</h1>
+        <h1>{this.state.description}</h1>
+        <h1>{this.state.humidity}</h1>
+        <h1>{this.state.temperature}</h1>
+        <h1>{this.state.wind}</h1>
         <h1>Have you taken your medication?</h1>
         <form onSubmit={this.handleSubmit}>
           <Button type="submit" variant="contained" color="primary">
