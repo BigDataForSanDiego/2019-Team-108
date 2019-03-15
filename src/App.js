@@ -5,7 +5,6 @@ import "./style/App.css";
 // components
 import SignUp from "./components/SignUp.js";
 import Home from "./components/Home.js";
-
 class App extends Component {
   render() {
     return (

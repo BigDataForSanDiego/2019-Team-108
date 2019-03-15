@@ -101,6 +101,14 @@ class SignUp extends React.Component {
             color="primary"
             className={classes.button}
           >
+            LOG IN
+          </Button>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            className={classes.button}
+          >
             SIGN UP
           </Button>
         </form>
