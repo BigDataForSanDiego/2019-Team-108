@@ -49,7 +49,8 @@ const styles = theme => ({
     flexWrap: "wrap",
   },
 });
-class SignUp extends React.Component {
+
+class Entry extends React.Component {
   state = {
     email: "USER@USER.COM",
     password: "PASSWORD",
@@ -135,4 +136,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default withStyles(styles)(SignUp);
+export default withStyles(styles)(Entry);

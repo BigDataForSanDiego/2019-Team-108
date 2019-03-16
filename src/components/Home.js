@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import { Redirect } from "react-router-dom";
-
-// material ui
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
-
 // environment
 require("dotenv").config();
 let OPEN_WEATHER_ID = process.env.REACT_APP_OPEN_WEATHER_ID;
@@ -57,7 +54,7 @@ const styles = theme => ({
     flexWrap: "wrap",
   },
 });
-export default class Home extends Component {
+class Home extends Component {
   state = {
     city: MAIN_CITY,
     country: MAIN_COUNTRY,
@@ -108,22 +105,26 @@ export default class Home extends Component {
     }
 
     return (
-      <div>
-        <h1>
-          Weather for {this.state.city}, {this.state.country}!
-        </h1>
-        <h1>Expect {this.state.description}!</h1>
-        <h1>Temperature: {(this.state.temperature * 1.8 + 32).toFixed(2)}°F</h1>
-        <h1>Wind speed: {this.state.wind} miles per hour</h1>
-        <h1>Remember to take your medication!</h1>
-        <form onSubmit={this.handleSubmit}>
-          <Button type="submit" color="primary" variant="contained">
-            LOG OUT
-          </Button>
-        </form>
-      </div>
+      <main className={classes.main}>
+        <Paper className={classes.paper}>
+          <h1>
+            Weather for {this.state.city}, {this.state.country}!
+          </h1>
+          <h1>Expect {this.state.description}!</h1>
+          <h1>
+            Temperature: {(this.state.temperature * 1.8 + 32).toFixed(2)}°F
+          </h1>
+          <h1>Wind speed: {this.state.wind} miles per hour</h1>
+          <h1>Remember to take your medication!</h1>
+          <form onSubmit={this.handleSubmit}>
+            <Button type="submit" color="primary" variant="contained">
+              LOG OUT
+            </Button>
+          </form>
+        </Paper>
+      </main>
     );
   }
 }
 
-withStyles(styles)(Home);
+export default withStyles(styles)(Home);
